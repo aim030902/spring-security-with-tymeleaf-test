@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}">Books</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="text" placeholder="Search">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <h3 class="mt-4">Login Page</h3>
+    <hr>
+    <form method="post" th:action="@{/api/auth/login}">
+        <div class="mb-3 mt-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="text" class="form-control" id="password" placeholder="Enter password" name="password">
+        </div>
+        <div class="col-2">
+            <label>Verify</label>
+        </div>
+        <div class="col-4 mt-3 mb-3">
+            <div class="g-recaptcha"
+                 data-sitekey="6LeYNvkkAAAAACJFWVvn5fvAE8E9sBjVcLRyQuhf">
+            </div>
+        </div>
+
+        <div class="mb-4 mt-4">
+            <h4 style="display: inline-block; margin-left: 20px" class="col-1"><a th:href="@{/oauth2/authorization/google}"><i class="fa fa-google fa-lg"></i></a></h4>
+            <h4 style="display: inline-block" class="col-1"><a th:href="@{/oauth2/authorization/github}"><i class="fa fa-github fa-lg "></i></a></h4>
+            <h4 style="display: inline-block" class="col-1"><a th:href="@{/oauth2/authorization/facebook}"><i class="fa fa-facebook fa-lg"></i></a></h4>
+        </div>
+
+        <a th:href="@{/api/auth/register}" class="btn btn-info me-4">Register</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>
